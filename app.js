@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static("views"));
 
 app.get("/api/health", (req, res) => {
-  res.json({ status: "success", message: "App is running fine 💚" });
+  res.json({ status: "success", message: "App is running fine " });
 });
 
 app.get("/", (req, res) => {
@@ -15,5 +15,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+  console.log(` Server running on http://localhost:${PORT}`);
 });
