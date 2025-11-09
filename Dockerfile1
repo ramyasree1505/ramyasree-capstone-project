@@ -1,0 +1,48 @@
+pipeline {
+    agent any
+    environment {
+        IMAGE_NAME = 'my-node-app'
+        DOCKERHUB_REPO = 'ramyasree15/my-capstone-project'
+        DOCKERHUB_CREDENTIALS = 'dockerhub-token'
+    }
+
+    stages {
+        stage('Code Checkout') {
+            steps {
+                echo 'Code checkout'
+                git branch: 'main', url: 'https://github.com/ramyasree1505/ramyasree-capstone-project.git'
+            }
+        }
+        
+        stage('Image Building') {
+            steps {
+                echo 'image building'
+                bat 'docker build -t %IMAGE_NAME% .'
+            }
+        }
+        stage('Docker Login and push') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: DOCKERHUB_CREDENTIALS, usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                   bat """
+                    docker login -u %DOCKER_USER% -p %DOCKER_PASS%
+                    docker tag %IMAGE_NAME% %DOCKERHUB_REPO%:latest
+                    docker push %DOCKERHUB_REPO%:latest
+                """ 
+                }
+            }
+        }
+        
+        stage('Docker Pull Image') {
+            steps {
+                echo 'Pull image and run'
+                bat 'docker pull %DOCKERHUB_REPO%:latest'
+            }
+        }
+        stage('Deploy Docker Container') {
+            steps {
+                echo 'Deploy Docker Container'
+                bat 'docker run -d -p 80:3000 --name node-app-container %DOCKERHUB_REPO%:latest'
+            }
+        }
+    }
+}
