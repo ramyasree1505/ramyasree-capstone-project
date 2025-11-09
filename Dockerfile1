@@ -16,7 +16,7 @@ pipeline {
         
         stage('Image Building') {
             steps {
-                echo 'image building'
+                echo 'Image Building'
                 bat 'docker build -t %IMAGE_NAME% .'
             }
         }
