@@ -34,7 +34,7 @@ pipeline {
         
         stage('Docker Pull Image') {
             steps {
-                echo 'Pull image and run'
+                echo 'Pull image and run the image'
                 bat 'docker pull %DOCKERHUB_REPO%:latest'
             }
         }
