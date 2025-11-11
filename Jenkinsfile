@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Code Checkout') {
             steps {
-                echo 'Checking out code from GitHub user'
+                echo 'Checking out code from GitHub'
                 git branch: 'main', url: 'https://github.com/ramyasree1505/ramyasree-capstone-project.git'
             }
         }
