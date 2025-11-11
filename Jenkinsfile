@@ -38,15 +38,9 @@ pipeline {
 
         stage('Deploy to EC2') {
             steps {
-                sshagent([EC2_KEY_CREDENTIALS]) {
-                    sh """
-                    ssh -o StrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} '
-                        docker pull ${DOCKERHUB_REPO}:latest
-                        docker rm -f node-app-container || true
-                        docker run -d -p 80:3000 --name node-app-container ${DOCKERHUB_REPO}:latest
-                    '
-                    """
-                }
+                bat '''
+                    ssh -i C:\\path\\to\\your\\private_key.pem ubuntu@your-ec2-ip "docker pull ramyasree15/my-capstone-project:latest && docker run -d --rm -p 3000:3000 ramyasree15/my-capstone-project:latest"
+                '''
             }
         }
     }
