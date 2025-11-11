@@ -41,8 +41,7 @@ pipeline {
                 bat """
                     REM SSH key must be in a secure path
                     ssh -i C:/jenkins_keys/key-user.pem ubuntu@98.93.46.22 ^
-                    "docker pull ramyasree15/my-capstone-project:latest && ^
-                    docker run -d --rm --name node-app -p 3000:3000 ramyasree15/my-capstone-project:latest
+                    "docker rm -f node-app || true && docker pull ramyasree15/my-capstone-project:latest && docker run -d --name node-app -p 3000:3000 ramyasree15/my-capstone-project:latest"
                 """
             }
         }
