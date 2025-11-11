@@ -39,7 +39,7 @@ pipeline {
         stage('Deploy to EC2') {
             steps {
                 bat """
-                    REM Make sure your SSH key is in a path without spaces, e.g., C:\\jenkins_keys\\key-user.pem
+                    REM SSH key must be in a secure path
                     ssh -i C:/jenkins_keys/key-user.pem ubuntu@98.93.46.22 ^
                     "docker pull ramyasree15/my-capstone-project:latest && ^
                     docker run -d --rm --name node-app-\$(date +%s) -p 3000:3000 ramyasree15/my-capstone-project:latest"
