@@ -39,7 +39,7 @@ pipeline {
         stage('Deploy to EC2') {
             steps {
                 bat '''
-                    ssh -i C:\\path\\to\\your\\private_key.pem ubuntu@your-ec2-ip "docker pull ramyasree15/my-capstone-project:latest && docker run -d --rm -p 3000:3000 ramyasree15/my-capstone-project:latest"
+                    ssh -i C:\Users\Mathan Sree\key.pem ubuntu@98.93.46.22 "docker pull ramyasree15/my-capstone-project:latest && docker run -d --rm -p 3000:3000 ramyasree15/my-capstone-project:latest"
                 '''
             }
         }
