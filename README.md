@@ -23,12 +23,16 @@ Make sure you have the following installed:
 1.**Clone the repository**:
     git clone https://github.com/yourusername/your-repo.git
     cd your-repo
+    
 2.**Install dependencies**
     npm install
+    
 3.**Build Docker image**
     docker build -t my-capstone-project 
+    
 4.**Run Docker container**
     docker run -p 3000:3000 --env-file .env my-capstone-project
+    
 5.**Access the application**
     Open your browser and go to http://localhost:3000
 
