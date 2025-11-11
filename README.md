@@ -37,29 +37,27 @@ Make sure you have the following installed:
     Open your browser and go to http://localhost:3000
 
 
-**Jenkins CI/CD Pipeline**
+#**CI/CD Pipeline**
 
-****The Jenkinsfile automates build and deployment.****
+    **Pipeline stages**
 
-**Pipeline stages**
+          - Checkout – Pulls code from GitHub
+          
+          - Build – Builds the Docker image
+          
+          - Test – Runs unit tests (if any)
+          
+          - Deploy – Pushes Docker image to Docker Hub / Deploys to AWS EC2
 
-      - Checkout – Pulls code from GitHub
-      
-      - Build – Builds the Docker image
-      
-      - Test – Runs unit tests (if any)
-      
-      - Deploy – Pushes Docker image to Docker Hub / Deploys to AWS EC2
-
-**Jenkins Setup**
-        - Create a new pipeline job
-        
-        - Point pipeline to this repository
-        
-        - Add credentials for GitHub and Docker Hub
-        
-        - Click Build Now to run the pipeline
-
-**Dockerfile**
-
-This project includes a Dockerfile as well.
+    **Jenkins Setup**
+            - Create a new pipeline job
+            
+            - Point pipeline to this repository
+            
+            - Add credentials for GitHub and Docker Hub
+            
+            - Click Build Now to run the pipeline
+    
+    **Dockerfile**
+    
+            - This project includes a Dockerfile as well.
